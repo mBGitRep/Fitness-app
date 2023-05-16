@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Edit Arms Exercises</h1>
+<form action="/exercises/{{ exercise['id'] }}" method="POST">
+  <label for="">Day:</label>
+  <input type="text" name="Day" value="{{ exercise['day_of_month'] }}">
+
+  <label for="">Plan:</label>
+  <input type="text" name="Plan" value="{{ exercise['exercise_plan'] }}">
+
+  <label for="">Current Weight:</label>
+  <input type="text" name="Current Weight" value="{{ exercise['current_weight'] }}">
+
+  <label for="">Fasting Schedule:</label>
+  <input type="text" name="Fasting Schedule" value="{{ exercise['fasting_schedule'] }}">
+
+
+  <label for="">Dietary Plan:</label>
+  <input type="text" name="Dietary Plan" value="{{ exercise['dietary_plan'] }}">
+
+
+  <label for="">Image:</label>
+  <input type="text" name="image_url" value="{{ exercise['image_url'] }}">
+
+  <label for="">Comment:</label>
+  <input type="text" name="comment" value="{{ exercise['input_comment'] }}">
+
+
+  <button>Update Arms Exercise</button>
+</form>
+{% endblock %}

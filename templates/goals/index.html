@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Exercises</h1>
+
+{% if current_user %}
+<h3>Welcome to Keep it Fit {{ current_user['first_name'] }}</h3>
+  
+<section class="controls">
+    <form action="/sessions/delete" method="POST">
+      <button>Log out</button>
+    </form>
+  
+    <a href="/goals/new">Add Goals</a>
+   
+  </section>
+  <section class="goals">
+        {% for goal in goals: %}
+     
+    <section class="goal">
+        <header>
+            <h2>{{ goal['name'] }}</h2>
+
+            <section class="controls">
+                <a href="/goals/{{ goal['id'] }}/edit">Edit</a>
+                <a href="/exercises">Select this Goals</a>
+
+                <form action="/goals/{{ goal['id'] }}/delete" method="POST">
+                    <button>Delete</button>
+                  </form>
+                
+                </section>
+            </header>
+        <p1>Select your Goal:</p1><p>{{ goal['goal_text'] }}</p>
+        <img src="{{ goal['goal_image_url'] }}" alt="">
+    </section>
+    {% endfor %}
+</section>
+{% else %}
+<a href="/users/new">Sign up</a>
+<a href="/sessions/new">Log in</a>
+{% endif %}
+
+{% endblock %}
+

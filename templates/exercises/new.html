@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Add Exercises</h1>
+    <form action="/exercises" method="POST">
+        <label for="">Day:</label>
+        <input type="text" name="day_of_month">
+
+        <label for="">Exercise Plan:</label>
+        <input type="text" name="exercise_plan">
+
+        <label for="">Current Weight:</label>
+        <input type="text" name="current_weight">
+
+        <label for="">Fasting Schedule:</label>
+        <input type="text" name="fasting_schedule">
+
+        <label for="">Dietary Plan:</label>
+        <input type="text" name="dietary_plan">
+
+        <label for="">Image:</label>
+        <input type="text" name="image_url">
+
+        <button>Add Exercises</button>
+        </form> 
+{% endblock %} 
+       
+       

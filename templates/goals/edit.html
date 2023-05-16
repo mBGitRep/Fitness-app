@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Customise Your Goals</h1>
+<form action="/goals/{{ goal['id'] }}" method="POST">
+  <label for="">Goal:</label>
+  <input type="text" name="goal_text" value="{{ goal['goal_text'] }}">
+
+
+  <label for="">Image:</label>
+  <input type="text" name="goal_image_url" value="{{ goal['goal_image_url'] }}">
+
+
+  <button>Update Goal</button>
+</form>
+{% endblock %}

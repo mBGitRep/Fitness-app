@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Exercises</h1>
+
+{% if current_user %}
+<h3>Welcome to Keep it Fit {{ current_user['first_name'] }}</h3>
+  
+<section class="controls">
+    <form action="/sessions/delete" method="POST">
+      <button>Log out</button>
+    </form>
+  
+    <a href="/exercises/new">Add Exercise Style</a>
+  </section>
+  <section class="exercises">
+        {% for exercise in exercises: %}
+     
+    <section class="exercise">
+        <header>
+            <h2>{{ exercise['name'] }}</h2>
+
+            <section class="controls">
+                <a href="/exercises/{{ exercise['id'] }}/edit">Edit</a>
+
+                <form action="/exercises/{{ exercise['id'] }}/delete" method="POST">
+                    <button>Delete</button>
+                  </form>
+
+                  <form action="/exercises/{{ exercise['id'] }}/comments" method="POST">
+                    <button>Add Comment</button>
+                  </form>
+
+                  <label for="">Additional Comments:</label>
+                    <input type="text" name="Comment" value="{{ exercise['comment'] }}">
+
+                    <form action="/exercises/{{ exercise['id'] }}/favourites" method="POST">
+                      <button>Favourite</button> 
+                </section>
+            </header>
+        
+        <img src="{{ exercise['image_url'] }}" alt=""><br>
+
+        <p1>Day:</p1><p>{{ exercise['day_of_month'] }}</p>
+        <p1>Exercise Type</p1><p>{{ exercise['exercise_plan'] }}</p>
+        <p1>Your curent weight</p1><p>{{ exercise['current_weight'] }}</p>
+        <p1>Number of Hours to Fast</p1><p>{{ exercise['fasting_schedule'] }}</p>
+        <p1>Diet Plan</p1><p>{{ exercise['dietary_plan'] }}</p>
+        <p1>Comments</p1><p>{{ exercise['input_comment'] }}</p>
+    </section>
+    {% endfor %}
+</section>
+{% else %}
+<a href="/users/new">Sign up</a>
+<a href="/sessions/new">Log in</a>
+{% endif %}
+
+{% endblock %}
+
+
+
+   
+ 
+  

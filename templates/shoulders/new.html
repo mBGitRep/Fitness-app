@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Add shoulders</h1>
+    <form action="/shoulders" method="POST">
+        <label for="">Day:</label>
+        <input type="text" name="day_of_month">
+
+        <label for="">shoulder Plan:</label>
+        <input type="text" name="shoulder_plan">
+
+        <label for="">Current Weight:</label>
+        <input type="text" name="current_weight">
+
+        <label for="">Fasting Schedule:</label>
+        <input type="text" name="fasting_schedule">
+
+        <label for="">Dietary Plan:</label>
+        <input type="text" name="dietary_plan">
+
+        <label for="">Image:</label>
+        <input type="text" name="image_url">
+
+        <button>Add shoulders</button>
+        </form> 
+{% endblock %} 
+       
+       

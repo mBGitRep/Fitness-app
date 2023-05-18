@@ -25,5 +25,5 @@ app.register_blueprint(sessions_routes, url_prefix='/sessions')
 
 @app.route('/')
 def index():
-    return redirect('/goals')
+    return redirect('/exercises')
   

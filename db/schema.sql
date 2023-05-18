@@ -67,7 +67,7 @@ INSERT INTO shoulders (day, plan, weight, fasting, diet, image, change, user_id)
 VALUES 
 ('Monday', 'Stretching', '98 kgs', 'Yes 2 hours', 'Low Carb', 'https://offgridweb.com/wp-content/uploads/2016/06/Stretching-exercises-2-1024x724.jpg', 'Lost 2 kgs', 0)
 ('Tuesday', 'Yoga', '98 kgs', 'Yes 3 hours', 'No Carb', 'https://veritas.widen.net/content/1cmlnjmhpu/webp/Stretching-Pinterest-v5.webp?use=idsla&crop=0&k=&color=&retina=false&u=at8tiu&w=658', 'No Change', 0)
-('Wednesday', 'PE', '97 kgs', 'Yes 1 hour', 'Low Carb', 'https://en.pimg.jp/092/077/314/1/92077314.jpg', 'Lost 6 kgs', 0);
+('Wednesday', 'PE', '97 kgs', 'Yes 1 hour', 'Low Carb', 'https://en.pimg.jp/092/077/314/1/92077314.jpg', 'Lost 3 kgs', 0);
 
 
 

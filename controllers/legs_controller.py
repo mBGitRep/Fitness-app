@@ -1,23 +1,26 @@
 from flask import render_template, request, redirect, session
-from models.leg import all_legs, get_leg, create_leg, update_leg, delete_leg, comment_leg, favourite_leg
+from models.leg import all_legs, all_comments, get_leg, create_leg, update_leg, delete_leg, like_leg, comment_leg, favorite_leg
 from services.session_info import current_user
 
 def index():
+    comments = all_comments()
     legs = all_legs()
-    return render_template('legs/index.html', legs=legs, current_user=current_user())
+    return render_template('legs/index.html', legs=legs, comments=comments, current_user=current_user())
+    # return f'{comments}'
 
 def new():
   return render_template('legs/new.html')
 
 def create():
-  day_of_month = request.form.get ('day_of_month')
-  leg_plan = request.form.get ('leg_plan')
-  current_weight = request.form.get ('current_weight')
-  fasting_schedule = request.form.get ('fasting_schedule')
-  dietary_plan = request.form.get ('dietary_plan')
-  image_url = request.form.get ('image_url')
-  input_comment = request.form.get('input_comment')
-  create_leg(day_of_month, leg_plan, current_weight, fasting_schedule, dietary_plan, image_url, input_comment)
+  day = request.form.get ('day')
+  plan = request.form.get ('plan')
+  weight = request.form.get ('weight')
+  fasting = request.form.get ('fasting')
+  diet = request.form.get ('diet')
+  image = request.form.get ('image')
+  change = request.form.get('change')
+  user_id = current_user()['id']
+  create_leg(day, plan, weight, fasting, diet, image, change, user_id)
   return redirect('/legs')
 
 def edit(id):
@@ -25,24 +28,35 @@ def edit(id):
    return render_template('legs/edit.html', leg=leg)
    
 def update(id):
-  day_of_month = request.form.get ('day_of_month')
-  leg_plan = request.form.get ('leg_plan')
-  current_weight = request.form.get ('current_weight')
-  fasting_schedule = request.form.get ('fasting_schedule')
-  dietary_plan = request.form.get ('dietary_plan')
-  image_url = request.form.get ('image_url')
-  input_comment = request.form.get('input_comment')
-  update_leg(day_of_month, leg_plan, current_weight, fasting_schedule, dietary_plan, image_url, input_comment, id)
+  day = request.form.get ('day')
+  plan = request.form.get ('plan')
+  weight = request.form.get ('weight')
+  fasting = request.form.get ('fasting')
+  diet = request.form.get ('diet')
+  image = request.form.get ('image')
+  change = request.form.get('change')
+  user_id = current_user()['id']
+  update_leg(id, day, plan, weight, fasting, diet, image, change, user_id)
   return redirect('/legs')
 
 def delete(id):
   delete_leg(id)
   return redirect('/legs')
 
-def comment(id):
-  comment_leg(id, session['user_id'])
-  return redirect('/legs')
 
-def favourite(id):
-  favourite_leg(id, session['user_id'])
-  return redirect('/legs')
+def favorite(id):
+  favorite_leg(id, session['user_id'])
+  return redirect('/favorites')
+
+def like(id):
+    like_leg(id, session['user_id'])
+    return redirect('/likes')
+
+
+def comment(id):
+    exercise_id = id
+    user_id = current_user()['id']
+    comment = request.form.get('comment')
+    comment_leg(exercise_id, user_id, comment)
+
+    return redirect(f'/legs')

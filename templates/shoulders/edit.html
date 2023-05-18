@@ -1,33 +1,38 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<h1>Edit shoulders Exercise</h1>
+<header>
+  <h1 class="title">Exercises To Keep You Fit</h1>
+  <a href="/shoulders" class="button">Go Back To Goals</a>
+</header>
+<main class="exercising">
+<h1>Edit Exercise</h1>
 <form action="/shoulders/{{ shoulder['id'] }}" method="POST">
   <label for="">Day:</label>
-  <input type="text" name="Day" value="{{ shoulder['day_of_month'] }}">
+  <input type="text" name="day" value="{{ shoulder['day'] }}">
 
   <label for="">Plan:</label>
-  <input type="text" name="Plan" value="{{ shoulder['shoulder_plan'] }}">
+  <input type="text" name="plan" value="{{ shoulder['plan'] }}">
 
   <label for="">Current Weight:</label>
-  <input type="text" name="Current Weight" value="{{ shoulder['current_weight'] }}">
+  <input type="text" name="weight" value="{{ shoulder['weight'] }}">
 
   <label for="">Fasting Schedule:</label>
-  <input type="text" name="Fasting Schedule" value="{{ shoulder['fasting_schedule'] }}">
+  <input type="text" name="fasting" value="{{ shoulder['fasting'] }}">
 
 
   <label for="">Dietary Plan:</label>
-  <input type="text" name="Dietary Plan" value="{{ shoulder['dietary_plan'] }}">
+  <input type="text" name="diet" value="{{ shoulder['diet'] }}">
 
 
   <label for="">Image:</label>
-  <input type="text" name="image_url" value="{{ shoulder['image_url'] }}">
+  <input type="text" name="image" value="{{ shoulder['image'] }}">
 
-  <label for="">Comment:</label>
-  <input type="text" name="comment" value="{{ shoulder['input_comment'] }}">
+  <label for="">Edits:</label>
+  <input type="text" name="change" value="{{ shoulder['change'] }}">
 
 
-  <button>Update shoulders Exercise</button>
+  <button>Update Exercise</button>
 </form>
+</main>
 {% endblock %}

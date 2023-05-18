@@ -33,4 +33,4 @@ def exercise(id):
     exercise = get_exercise(id)
     comments = all_comments(id)
     likes_count = all_likes(id)[0]
-    return render_template('sessions/exercise.html', exercise=exercise,current_user= current_user(), comments = comments, likes_count = likes_count)
+    return render_template('exercises/index.html', exercise=exercise,current_user= current_user(), comments = comments, likes_count = likes_count)

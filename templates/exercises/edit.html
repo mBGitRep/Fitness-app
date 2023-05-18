@@ -2,11 +2,11 @@
 
 {% block content %}
 <header>
-  <h1 class="title">Exercises</h1>
-  <a href="/exercises" class="button">Go to homepage</a>
+  <h1 class="title">Exercises To Keep You Fit</h1>
+  <a href="/exercises" class="button">Go Back To Goals</a>
 </header>
 <main class="exercising">
-<h1>Edit Arms Exercises</h1>
+<h1>Edit Exercises</h1>
 <form action="/exercises/{{ exercise['id'] }}" method="POST">
   <label for="">Day:</label>
   <input type="text" name="day" value="{{ exercise['day'] }}">
@@ -32,7 +32,7 @@
   <input type="text" name="change" value="{{ exercise['change'] }}">
 
 
-  <button>Update Arms Exercise</button>
+  <button>Update Exercise</button>
 </form>
 </main>
 {% endblock %}

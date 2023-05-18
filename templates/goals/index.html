@@ -1,17 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Exercises</h1>
+ <img src="https://i.postimg.cc/XvvMHygs/coverpage.png" alt="">
+    <h1>Exercises To Keep You Fit</h1>
 
 {% if current_user %}
-<h3>Welcome to Keep it Fit {{ current_user['first_name'] }}</h3>
+<h3>Welcome To Keep It Fit  {{ current_user['first_name'] }}</h3>
   
 <section class="controls">
     <form action="/sessions/delete" method="POST">
-      <button>Log out</button>
+      <button>Log Out</button>
     </form>
   
     <a href="/goals/new">Add Goals</a>
+    <a href="/exercises">Click Here If You Want To Gain Muscles</a>
+    <a href="/legs">Click Here If You Want To Loose Weight</a>
+    <a href="/shoulders">Click Here If You Want To Stay Active</a>
    
   </section>
   <section class="goals">
@@ -19,11 +23,12 @@
      
     <section class="goal">
         <header>
+           
             <h2>{{ goal['name'] }}</h2>
 
             <section class="controls">
                 <a href="/goals/{{ goal['id'] }}/edit">Edit</a>
-                <a href="/exercises">Select this Goals</a>
+                
 
                 <form action="/goals/{{ goal['id'] }}/delete" method="POST">
                     <button>Delete</button>
@@ -37,8 +42,8 @@
     {% endfor %}
 </section>
 {% else %}
-<a href="/users/new">Sign up</a>
-<a href="/sessions/new">Log in</a>
+<a href="/users/new">Sign Up</a>
+<a href="/sessions/new">Log In</a>
 {% endif %}
 
 {% endblock %}

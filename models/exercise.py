@@ -33,9 +33,6 @@ def like_exercise(exercise_id, user_id):
 def comment_exercise(exercise_id, user_id, comment):
     sql("INSERT INTO comments (exercise_id, user_id, comment) VALUES (%s, %s, %s) RETURNING *",[exercise_id, user_id, comment])
 
-# def all_comments(exercise_id):
-#     return sql("SELECT * FROM comments WHERE exercise_id =%s",[exercise_id])
-
 def all_comments():
     return sql("SELECT * FROM comments")
 

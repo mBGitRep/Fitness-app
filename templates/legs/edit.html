@@ -1,33 +1,38 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<h1>Edit Legs Exercise</h1>
+<header>
+  <h1 class="title">Exercise To Keep You Fit</h1>
+  <a href="/legs" class="button">Go Back To Goals</a>
+</header>
+<main class="exercising">
+<h1>Edit Exercise</h1>
 <form action="/legs/{{ leg['id'] }}" method="POST">
   <label for="">Day:</label>
-  <input type="text" name="Day" value="{{ leg['day_of_month'] }}">
+  <input type="text" name="day" value="{{ leg['day'] }}">
 
   <label for="">Plan:</label>
-  <input type="text" name="Plan" value="{{ leg['leg_plan'] }}">
+  <input type="text" name="plan" value="{{ leg['plan'] }}">
 
   <label for="">Current Weight:</label>
-  <input type="text" name="Current Weight" value="{{ leg['current_weight'] }}">
+  <input type="text" name="weight" value="{{ leg['weight'] }}">
 
   <label for="">Fasting Schedule:</label>
-  <input type="text" name="Fasting Schedule" value="{{ leg['fasting_schedule'] }}">
+  <input type="text" name="fasting" value="{{ leg['fasting'] }}">
 
 
   <label for="">Dietary Plan:</label>
-  <input type="text" name="Dietary Plan" value="{{ leg['dietary_plan'] }}">
+  <input type="text" name="diet" value="{{ leg['diet'] }}">
 
 
   <label for="">Image:</label>
-  <input type="text" name="image_url" value="{{ leg['image_url'] }}">
+  <input type="text" name="image" value="{{ leg['image'] }}">
 
-  <label for="">Comment:</label>
-  <input type="text" name="comment" value="{{ leg['input_comment'] }}">
+  <label for="">Edits:</label>
+  <input type="text" name="change" value="{{ leg['change'] }}">
 
 
-  <button>Update legs Exercise</button>
+  <button>Update Exercise</button>
 </form>
+</main>
 {% endblock %}

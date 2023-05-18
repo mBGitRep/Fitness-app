@@ -1,5 +1,5 @@
 from flask import Blueprint
-from controllers.shoulders_controller import index, new, create, edit, update, delete, comment, favourite
+from controllers.shoulders_controller import index, new, create, edit, update, delete, like, comment, favorite
 
 shoulders_routes = Blueprint('shoulders_routes', __name__)
 
@@ -10,4 +10,5 @@ shoulders_routes.route('/<id>/edit')(edit)
 shoulders_routes.route('/<id>', methods=["POST"])(update)
 shoulders_routes.route('/<id>/delete', methods=["POST"])(delete)
 shoulders_routes.route('/<id>/comments', methods=["POST"])(comment)
-shoulders_routes.route('/<id>/favourites', methods=["POST"])(favourite)
+shoulders_routes.route('/<id>/likes', methods=["POST"])(like)
+shoulders_routes.route('/<id>/favorites', methods=["POST"])(favorite)

@@ -1,15 +1,15 @@
 from flask import render_template, request, redirect, session
-from models.exercise import all_exercises, all_comments, get_exercise, create_exercise, update_exercise, delete_exercise, like_exercise, comment_exercise, favorite_exercise
+from models.favorite import all_favorites, all_comments, get_favorite, create_favorite, update_favorite, delete_favorite, like_favorite, comment_favorite, favorite_favorite
 from services.session_info import current_user
 
 def index():
     comments = all_comments()
-    exercises = all_exercises()
-    return render_template('exercises/index.html', exercises=exercises, comments=comments, current_user=current_user())
+    favorites = all_favorites()
+    return render_template('favorites/index.html', favorites=favorites, comments=comments, current_user=current_user())
     # return f'{comments}'
 
 def new():
-  return render_template('exercises/new.html')
+  return render_template('favorites/new.html')
 
 def create():
   day = request.form.get ('day')
@@ -20,12 +20,12 @@ def create():
   image = request.form.get ('image')
   change = request.form.get('change')
   user_id = current_user()['id']
-  create_exercise(day, plan, weight, fasting, diet, image, change, user_id)
-  return redirect('/exercises')
+  create_favorite(day, plan, weight, fasting, diet, image, change, user_id)
+  return redirect('/favorites')
 
 def edit(id):
-   exercise = get_exercise(id)
-   return render_template('exercises/edit.html', exercise=exercise)
+   favorite = get_favorite(id)
+   return render_template('favorites/edit.html', favorite=favorite)
    
 def update(id):
   day = request.form.get ('day')
@@ -36,20 +36,20 @@ def update(id):
   image = request.form.get ('image')
   change = request.form.get('change')
   user_id = current_user()['id']
-  update_exercise(id, day, plan, weight, fasting, diet, image, change, user_id)
-  return redirect('/exercises')
+  update_favorite(id, day, plan, weight, fasting, diet, image, change, user_id)
+  return redirect('/favorites')
 
 def delete(id):
-  delete_exercise(id)
-  return redirect('/exercises')
+  delete_favorite(id)
+  return redirect('/favorites')
 
 
 def favorite(id):
-  favorite_exercise(id, session['user_id'])
+  favorite_favorite(id, session['user_id'])
   return redirect('/favorites')
 
 def like(id):
-    like_exercise(id, session['user_id'])
+    like_favorite(id, session['user_id'])
     return redirect('/likes')
 
 
@@ -57,7 +57,7 @@ def comment(id):
     exercise_id = id
     user_id = current_user()['id']
     comment = request.form.get('comment')
-    comment_exercise(exercise_id, user_id, comment)
+    comment_favorite(exercise_id, user_id, comment)
 
-    return redirect(f'/exercises')
+    return redirect(f'/favorites')
 

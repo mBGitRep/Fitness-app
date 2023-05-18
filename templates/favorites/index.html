@@ -1,17 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Exercise To Keep You Fit</h1>
+    
 
 {% if current_user %}
-<h3>Welcome To Keep It Fit  {{ current_user['first_name'] }}</h3>
-  
+<h3>HURRRRAAAYYY.... its your favourite now  {{ current_user['first_name'] }}</h3>
+<h1>Lets Get Back To WORK OUT</h1>
+<a href="/goals" class="button">Go Back To Goals</a>
+<!--   
 <section class="controls">
     <form action="/sessions/delete" method="POST">
-      <button>Log Out</button>
+      <button>Log out</button>
     </form>
-    <a href="/goals" class="button">Go Back To Goals</a>
-    <a href="/legs/new">Add Exercise</a>
+  
+    <a href="/legs/new">Add leg Style</a>
   </section>
   <section class="legs">
         {% for leg in legs: %}
@@ -38,7 +40,7 @@
         
         <img src="{{ leg['image'] }}" alt=""><br>
         <p1>Day:</p1><p>{{ leg['day'] }}</p>
-        <p1>Type</p1><p>{{ leg['plan'] }}</p>
+        <p1>leg Type</p1><p>{{ leg['plan'] }}</p>
         <p1>Your curent weight</p1><p>{{ leg['weight'] }}</p>
         <p1>Number of Hours to Fast</p1><p>{{ leg['fasting'] }}</p>
         <p1>Diet Plan</p1><p>{{ leg['diet'] }}</p>
@@ -61,18 +63,13 @@
               </section>
         </section>
     </section>
-    
-    
+<!--     
+     -->
     {% endfor %}
 </section>
-{% else %}
+{% else %} -->
 <a href="/users/new">Sign Up</a>
 <a href="/sessions/new">Log In</a>
 {% endif %}
 
 {% endblock %}
-
-
-   
- 
-  

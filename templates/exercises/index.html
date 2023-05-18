@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Exercises</h1>
+    <h1>Exercises To Keep You Fit</h1>
 
 {% if current_user %}
-<h3>Welcome to Keep it Fit {{ current_user['first_name'] }}</h3>
+<h3>Welcome To Keep It Fit  {{ current_user['first_name'] }}</h3>
   
 <section class="controls">
     <form action="/sessions/delete" method="POST">
-      <button>Log out</button>
+      <button>Log Out</button>
     </form>
-  
+    <a href="/goals" class="button">Go Back To Goals</a>
     <a href="/exercises/new">Add Exercise Style</a>
   </section>
   <section class="exercises">
@@ -28,10 +28,10 @@
                     <button>Delete</button>
                   </form>
 
-                    <form action="/exercises/{{ exercise['id'] }}/favorites" method="POST">
+                  <form action="/exercises/{{ exercise['id'] }}/favorites" method="POST">
                       <button>Favorite</button> 
                     </form>
-                    
+
 
                 </section>
             </header>
@@ -60,14 +60,15 @@
               {% endfor %}
               </section>
         </section>
+
+ 
     </section>
-    
     
     {% endfor %}
 </section>
 {% else %}
-<a href="/users/new">Sign up</a>
-<a href="/sessions/new">Log in</a>
+<a href="/users/new">Sign Up</a>
+<a href="/sessions/new">Log In</a>
 {% endif %}
 
 {% endblock %}

@@ -21,12 +21,6 @@ body {
   margin-top: 1.5rem;
 }
 
-.arms {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  gap: 1.25rem;
-  margin-top: 1.5rem;
-}
 
 .legs {
   display: grid;
@@ -57,59 +51,60 @@ button {
   text-decoration: none;
   cursor: pointer;
 }
-.shoulder h2 {
+.shoulders h2 {
 
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.arm h2 {
+.legs h2 {
 
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.goal h2 {
+.goals h2 {
 
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.exercise h2 {
+.exercises h2 {
 
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.exercise img {
+.exercises img {
   width: 100%;
   height: 300px;
   object-fit: scale-down;
 }
 
-.goal img {
+.goals img {
   width: 100%;
   height: 300px;
   
-  object-fit: cover;
+  object-fit: scale-down;
+  flex-direction: row;
 }
 
-.shoulder img {
+.shoulders img {
   width: 100%;
   height: 300px;
   
-  object-fit: cover;
+  object-fit: scale-down;
 }
 
-.arm img {
+.legs img {
   width: 100%;
   height: 300px;
   
-  object-fit: cover;
+  object-fit: scale-down;
 }
 
-.exercise header {
+.exercises header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -117,7 +112,7 @@ button {
   padding: 0 1rem;
 }
 
-.goal header {
+.goals header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -125,7 +120,7 @@ button {
   padding: 0 1rem;
 }
 
-.shoulder header {
+.shoulders header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -133,7 +128,7 @@ button {
   padding: 0 1rem;
 }
 
-.arm header {
+.legs header {
   display: flex;
   align-items: center;
   justify-content: space-between;

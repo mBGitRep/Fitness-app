@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>shoulders Day</h1>
+    <h1>Exercise To Keep You Fit</h1>
 
 {% if current_user %}
-<h3>Welcome to Keep it Fit {{ current_user['first_name'] }}</h3>
+<h3>Welcome To Keep It Fit  {{ current_user['first_name'] }}</h3>
   
 <section class="controls">
     <form action="/sessions/delete" method="POST">
-      <button>Log out</button>
+      <button>Log Out</button>
     </form>
-  
-    <a href="/shoulders/new">Add shoulder Style</a>
+    <a href="/goals" class="button">Go Back To Goals</a>
+    <a href="/shoulders/new">Add Exercise</a>
   </section>
   <section class="shoulders">
         {% for shoulder in shoulders: %}
@@ -19,6 +19,7 @@
     <section class="shoulder">
         <header>
             <h2>{{ shoulder['name'] }}</h2>
+          
 
             <section class="controls">
                 <a href="/shoulders/{{ shoulder['id'] }}/edit">Edit</a>
@@ -27,35 +28,50 @@
                     <button>Delete</button>
                   </form>
 
-                  <form action="/shoulders/{{ shoulder['id'] }}/comments" method="POST">
-                    <button>Add Comment</button>
-                  </form>
+                    <form action="/shoulders/{{ shoulder['id'] }}/favorites" method="POST">
+                      <button>Favorite</button> 
+                    </form>
+                    
 
-                  <label for="">Additional Comments:</label>
-                    <input type="text" name="Comment" value="{{ shoulder['comment'] }}">
-
-                    <form action="/shoulders/{{ shoulder['id'] }}/favourites" method="POST">
-                      <button>Favourite</button> 
                 </section>
             </header>
         
-        <img src="{{ shoulder['image_url'] }}" alt=""><br>
-
-        <p1>Day:</p1><p>{{ shoulder['day_of_month'] }}</p>
-        <p1>shoulder Type</p1><p>{{ shoulder['shoulder_plan'] }}</p>
-        <p1>Your curent weight</p1><p>{{ shoulder['current_weight'] }}</p>
-        <p1>Number of Hours to Fast</p1><p>{{ shoulder['fasting_schedule'] }}</p>
-        <p1>Diet Plan</p1><p>{{ shoulder['dietary_plan'] }}</p>
-        <p1>Comments</p1><p>{{ shoulder['input_comment'] }}</p>
+        <img src="{{ shoulder['image'] }}" alt=""><br>
+        <p1>Day:</p1><p>{{ shoulder['day'] }}</p>
+        <p1>shoulder Type</p1><p>{{ shoulder['plan'] }}</p>
+        <p1>Your curent weight</p1><p>{{ shoulder['weight'] }}</p>
+        <p1>Number of Hours to Fast</p1><p>{{ shoulder['fasting'] }}</p>
+        <p1>Diet Plan</p1><p>{{ shoulder['diet'] }}</p>
+        <p1>Edits</p1><p>{{ shoulder['change'] }}</p>
+        <section>
+          <form action="/shoulders/{{ shoulder['id'] }}/comments" method="POST">
+            <textarea name="comment" id="" cols="30" rows="10"></textarea>
+            <hr>
+            <button>comment</button> 
+            </form>
+            <section class="comment">
+              {% for comment in comments if shoulder['id'] == comment['exercise_id'] %}
+                
+                <section class="comments">
+                  <p>{{ comment['comment'] }}</p>
+                  <hr>
+                </section>
+                
+              {% endfor %}
+              </section>
+        </section>
     </section>
+    
+    
     {% endfor %}
 </section>
 {% else %}
-<a href="/users/new">Sign up</a>
-<a href="/sessions/new">Log in</a>
+<a href="/users/new">Sign Up</a>
+<a href="/sessions/new">Log In</a>
 {% endif %}
 
 {% endblock %}
+
 
 
 

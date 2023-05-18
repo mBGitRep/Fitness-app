@@ -3,6 +3,7 @@ load_dotenv()
 import os
 from flask import Flask, redirect
 from routes.goals_routes import goals_routes
+from routes.favorites_routes import favorites_routes
 from routes.exercises_routes import exercises_routes
 from routes.legs_routes import legs_routes
 from routes.shoulders_routes import shoulders_routes
@@ -17,6 +18,7 @@ app.config['SECRET_KEY'] = SECRET_KEY
 app.register_blueprint(goals_routes, url_prefix='/goals')
 app.register_blueprint(exercises_routes, url_prefix='/exercises')
 app.register_blueprint(legs_routes, url_prefix='/legs')
+app.register_blueprint(favorites_routes, url_prefix='/favorites')
 app.register_blueprint(shoulders_routes, url_prefix='/shoulders')
 app.register_blueprint(users_routes, url_prefix='/users')
 app.register_blueprint(sessions_routes, url_prefix='/sessions')

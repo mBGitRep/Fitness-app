@@ -27,3 +27,5 @@ This project is a fitness app built using the CRUD method. It allows users to si
 - User progress tracking
 
 ## Screenshot
+f1.PNG
+

@@ -1,23 +1,26 @@
 from flask import render_template, request, redirect, session
-from models.exercise import all_exercises, get_exercise, create_exercise, update_exercise, delete_exercise, comment_exercise, favourite_exercise
+from models.exercise import all_exercises, all_comments, get_exercise, create_exercise, update_exercise, delete_exercise, like_exercise, comment_exercise, favorite_exercise
 from services.session_info import current_user
 
 def index():
+    comments = all_comments()
     exercises = all_exercises()
-    return render_template('exercises/index.html', exercises=exercises, current_user=current_user())
+    return render_template('exercises/index.html', exercises=exercises, comments=comments, current_user=current_user())
+    # return f'{comments}'
 
 def new():
   return render_template('exercises/new.html')
 
 def create():
-  day_of_month = request.form.get ('day_of_month')
-  exercise_plan = request.form.get ('exercise_plan')
-  current_weight = request.form.get ('current_weight')
-  fasting_schedule = request.form.get ('fasting_schedule')
-  dietary_plan = request.form.get ('dietary_plan')
-  image_url = request.form.get ('image_url')
-  input_comment = request.form.get('input_comment')
-  create_exercise(day_of_month, exercise_plan, current_weight, fasting_schedule, dietary_plan, image_url, input_comment)
+  day = request.form.get ('day')
+  plan = request.form.get ('plan')
+  weight = request.form.get ('weight')
+  fasting = request.form.get ('fasting')
+  diet = request.form.get ('diet')
+  image = request.form.get ('image')
+  change = request.form.get('change')
+  user_id = current_user()['id']
+  create_exercise(day, plan, weight, fasting, diet, image, change, user_id)
   return redirect('/exercises')
 
 def edit(id):
@@ -25,24 +28,35 @@ def edit(id):
    return render_template('exercises/edit.html', exercise=exercise)
    
 def update(id):
-  day_of_month = request.form.get ('day_of_month')
-  exercise_plan = request.form.get ('exercise_plan')
-  current_weight = request.form.get ('current_weight')
-  fasting_schedule = request.form.get ('fasting_schedule')
-  dietary_plan = request.form.get ('dietary_plan')
-  image_url = request.form.get ('image_url')
-  input_comment = request.form.get('input_comment')
-  update_exercise(day_of_month, exercise_plan, current_weight, fasting_schedule, dietary_plan, image_url, input_comment, id)
+  day = request.form.get ('day')
+  plan = request.form.get ('plan')
+  weight = request.form.get ('weight')
+  fasting = request.form.get ('fasting')
+  diet = request.form.get ('diet')
+  image = request.form.get ('image')
+  change = request.form.get('change')
+  user_id = current_user()['id']
+  update_exercise(id, day, plan, weight, fasting, diet, image, change, user_id)
   return redirect('/exercises')
 
 def delete(id):
   delete_exercise(id)
   return redirect('/exercises')
 
-def comment(id):
-  comment_exercise(id, session['user_id'])
+
+def favorite(id):
+  favorite_exercise(id, session['user_id'])
   return redirect('/exercises')
 
-def favourite(id):
-  favourite_exercise(id, session['user_id'])
-  return redirect('/exercises')
+def like(id):
+    like_exercise(id, session['user_id'])
+    return redirect(f'/sessions/page/{id}')
+
+
+def comment(id):
+    exercise_id = id
+    user_id = current_user()['id']
+    comment = request.form.get('comment')
+    comment_exercise(exercise_id, user_id, comment)
+
+    return redirect(f'/exercises')

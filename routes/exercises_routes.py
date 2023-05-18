@@ -1,5 +1,5 @@
 from flask import Blueprint
-from controllers.exercises_controller import index, new, create, edit, update, delete, comment, favourite
+from controllers.exercises_controller import index, new, create, edit, update, delete, like, comment, favorite
 
 exercises_routes = Blueprint('exercises_routes', __name__)
 
@@ -10,4 +10,5 @@ exercises_routes.route('/<id>/edit')(edit)
 exercises_routes.route('/<id>', methods=["POST"])(update)
 exercises_routes.route('/<id>/delete', methods=["POST"])(delete)
 exercises_routes.route('/<id>/comments', methods=["POST"])(comment)
-exercises_routes.route('/<id>/favourites', methods=["POST"])(favourite)
+exercises_routes.route('/<id>/likes', methods=["POST"])(like)
+exercises_routes.route('/<id>/favorites', methods=["POST"])(favorite)

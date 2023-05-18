@@ -1,6 +1,8 @@
 import psycopg2
 import psycopg2.extras
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 DB_URL = os.environ.get("DATABASE_URL", "dbname=exercises_app")
 

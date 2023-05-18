@@ -7,45 +7,30 @@ CREATE TABLE goals (
   goal_image_url TEXT
 );
 
-
 CREATE TABLE exercises (
   id SERIAL PRIMARY KEY,
-  day_of_month TEXT,
-  exercise_plan TEXT,
-  current_weight TEXT,
-  fasting_schedule TEXT,
-  dietary_plan TEXT,
-  image_url TEXT, 
-  input_comment TEXT
+  day TEXT,
+  plan TEXT,
+  weight TEXT,
+  fasting TEXT,
+  diet TEXT,
+  image TEXT,
+  change TEXT,
+  user_id INTEGER
 );
 
-CREATE TABLE legs (
+CREATE TABLE comments(
   id SERIAL PRIMARY KEY,
-  day_of_month TEXT,
-  exercise_plan TEXT,
-  current_weight TEXT,
-  fasting_schedule TEXT,
-  dietary_plan TEXT,
-  image_url TEXT, 
-  input_comment TEXT
+  exercise_id INTEGER,
+  user_id INTEGER,
+  comment TEXT
 );
 
-CREATE TABLE shoulders (
+CREATE TABLE likes(
   id SERIAL PRIMARY KEY,
-  day_of_month TEXT,
-  exercise_plan TEXT,
-  current_weight TEXT,
-  fasting_schedule TEXT,
-  dietary_plan TEXT,
-  image_url TEXT, 
-  input_comment TEXT
+  user_id INTEGER,
+  exercise_id INTEGER
 );
-
-
-
-
-
-
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
@@ -55,17 +40,9 @@ CREATE TABLE users (
     password_digest TEXT
 );
 
-
-CREATE TABLE comments (
+CREATE TABLE favorites (
   id SERIAL PRIMARY KEY,
   user_id INTEGER,
-  exercises_id INTEGER,
-  comment TEXT
-);
-
-CREATE TABLE favourites (
-  id SERIAL PRIMARY KEY,
-  user_id INTEGER,
-  exercises_id INTEGER,
+  exercise_id INTEGER,
   is_favorite BOOLEAN DEFAULT false
 );

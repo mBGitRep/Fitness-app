@@ -27,5 +27,7 @@ This project is a fitness app built using the CRUD method. It allows users to si
 - User progress tracking
 
 ## Screenshot
-f1.PNG
 
+![f1](https://github.com/mBGitRep/Fitness-app/assets/104259090/854289c2-f2f0-4590-9562-e72b134f63ae)
+![f2](https://github.com/mBGitRep/Fitness-app/assets/104259090/5a66a68a-aed7-4bba-a93f-58a1e839e950)
+![f3](https://github.com/mBGitRep/Fitness-app/assets/104259090/62cd373a-ef85-4d61-929f-d0da888123c2)
